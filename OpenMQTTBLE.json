@@ -1,0 +1,1811 @@
+[
+    {
+        "id": "9af6b790.64a958",
+        "type": "tab",
+        "label": "OpenMQTT BLE",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2aacd8.ffa1cb28",
+        "type": "link in",
+        "z": "9af6b790.64a958",
+        "name": "RF_Link Mi Scale Slave In",
+        "links": [
+            "f97097bc.18eb7"
+        ],
+        "x": 515,
+        "y": 1480,
+        "wires": [
+            [
+                "190113fc.0548ac"
+            ]
+        ]
+    },
+    {
+        "id": "7d345cfd.6ae05c",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "RF_Link Mi Scale Slave In",
+        "info": "",
+        "x": 545,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "1987f5d7.81d322",
+        "type": "link in",
+        "z": "9af6b790.64a958",
+        "name": "OpenMQTT BLE Slave In",
+        "links": [
+            "cd91a9ba.8d7a6"
+        ],
+        "x": 235,
+        "y": 760,
+        "wires": [
+            [
+                "f096ab6a.a5b0c",
+                "c70704e9.6efc",
+                "57fe8f1e.c0584",
+                "f6cd98b1.080268"
+            ]
+        ]
+    },
+    {
+        "id": "f1b8b50b.f7dc88",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "OpenMQTT BLE Slave In",
+        "info": "",
+        "x": 250,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f096ab6a.a5b0c",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "MiScale",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "home/OpenMQTTGatewayBLE/BTtoMQTT/C8478CD10EBE",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 1120,
+        "wires": [
+            [
+                "7c34c53c.adce34"
+            ]
+        ]
+    },
+    {
+        "id": "7c34c53c.adce34",
+        "type": "json",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 930,
+        "y": 1140,
+        "wires": [
+            [
+                "abe95498.9fe978",
+                "bad38892.c7b35",
+                "360f8b09.355544",
+                "6382b8dd.b5669"
+            ]
+        ]
+    },
+    {
+        "id": "9aea97a.05350e8",
+        "type": "ui_chart",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "group": "934d2234.d916e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Weight",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1240,
+        "y": 1280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "abe95498.9fe978",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "Mi Scale",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1080,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "bad38892.c7b35",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "weight",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.weight",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1240,
+        "wires": [
+            [
+                "cf475601.49a578",
+                "9aea97a.05350e8",
+                "9b4be8f1.ef5dc8",
+                "6bd85662.eebcc"
+            ]
+        ]
+    },
+    {
+        "id": "cf475601.49a578",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "934d2234.d916e8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Weight",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1240,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "190113fc.0548ac",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "if ScaleButton",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ScaleButton",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 1480,
+        "wires": [
+            [
+                "4c7a0ea3.63fd98"
+            ]
+        ]
+    },
+    {
+        "id": "4c7a0ea3.63fd98",
+        "type": "mytimeout",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "outtopic": "",
+        "outsafe": "ON",
+        "outwarning": "Warning",
+        "outunsafe": "OFF",
+        "warning": "5",
+        "timer": "60",
+        "debug": false,
+        "ndebug": false,
+        "ignoreCase": false,
+        "repeat": false,
+        "again": false,
+        "x": 930,
+        "y": 1480,
+        "wires": [
+            [
+                "2d5ed5c5.3fbe7a",
+                "4a90e9c3.6af8c8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2d5ed5c5.3fbe7a",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "EnableScale",
+        "rules": [
+            {
+                "t": "set",
+                "p": "EnableScale",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 1480,
+        "wires": [
+            [
+                "ef42921f.f053a",
+                "676b69af.84b158"
+            ]
+        ]
+    },
+    {
+        "id": "ef42921f.f053a",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1350,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "e1957eb1.790eb8",
+        "type": "http request",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://maker.ifttt.com/trigger/{{event}}/with/key/YOURiftttWebhookKey",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1350,
+        "y": 1540,
+        "wires": [
+            [
+                "e2bc8ff6.d17158"
+            ]
+        ]
+    },
+    {
+        "id": "e2bc8ff6.d17158",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1540,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "676b69af.84b158",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "IFTTT Webhook ",
+        "func": "if (msg.payload  ==\"ON\") {\nmsg.event = \"EnableScale\";\nmsg.payload = {\"value1\": \"Ready\", \"value2\": \"changeme\"};\nreturn msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1120,
+        "y": 1540,
+        "wires": [
+            [
+                "e1957eb1.790eb8"
+            ]
+        ]
+    },
+    {
+        "id": "7c713347.96a014",
+        "type": "http request",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://maker.ifttt.com/trigger/{{event}}/with/key/YOURiftttWebhookKey",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1450,
+        "y": 1400,
+        "wires": [
+            [
+                "4a0acc31.451ab4"
+            ]
+        ]
+    },
+    {
+        "id": "4a0acc31.451ab4",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1630,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "6bd85662.eebcc",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "IFTTT Webhook ",
+        "func": "var scale = flow.get('EnableScale');\nvar weight = msg.payload;\nvar now = new Date();\nvar yyyy = now.getFullYear();\nvar mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\nvar dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nvar ss  = now.getSeconds() < 10 ? \"0\" + now.getSeconds() : now.getSeconds();\nvar formattedtime = mm + \"/\" + dd + \"/\" + yyyy;\nif (scale  ==\"ON\") {\nmsg.event = \"LogWeight\"; //change to trigger \nnode.status({fill:\"blue\",shape:\"ring\",text:\"Weight:\" + weight + \" Last update: \"+ formattedtime});\nmsg.payload = {\"value1\": weight,\"value2\": formattedtime};\nreturn msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1280,
+        "y": 1400,
+        "wires": [
+            [
+                "7c713347.96a014"
+            ]
+        ]
+    },
+    {
+        "id": "b2a92409.168b9",
+        "type": "ui_chart",
+        "z": "9af6b790.64a958",
+        "name": "Freemem",
+        "group": "f7484b59.822cc",
+        "order": 6,
+        "width": "0",
+        "height": "0",
+        "label": "Freemem",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1220,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "124e249a.c582e3",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "payload.freemem",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.freemem",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 200,
+        "wires": [
+            [
+                "b2a92409.168b9"
+            ]
+        ]
+    },
+    {
+        "id": "c70704e9.6efc",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "home/OpenMQTTGatewayBLE/SYStoMQTT",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "home/OpenMQTTGatewayBLE/SYStoMQTT",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 80,
+        "wires": [
+            [
+                "ebc63904.696368"
+            ]
+        ]
+    },
+    {
+        "id": "ebc63904.696368",
+        "type": "json",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [
+                "124e249a.c582e3",
+                "b083e031.8e0488",
+                "df901386.eb0998",
+                "dd65e192.ab052",
+                "ef80272a.87b838",
+                "c3450df5.11e7f"
+            ]
+        ]
+    },
+    {
+        "id": "b083e031.8e0488",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 690,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "df901386.eb0998",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "Last Update",
+        "func": "var temp = context.get(\"last_update\");\nvar current = new Date();\n\nif (msg.topic!==\"update\") {\n    \n    if (temp!== undefined && temp!==null) {\n        msg.payload = current.getTime() - temp;\n        context.set(\"last_update\",current.getTime());\n    } else {\n        msg.payload = \"\";\n        context.set(\"last_update\",current.getTime());\n    }    \n    \n    // Update the status with current timestamp\n    var now = new Date();\n    var yyyy = now.getFullYear();\n    var mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\n    var dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\n    var hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\n    var mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\n    var ss  = now.getSeconds() < 10 ? \"0\" + now.getSeconds() : now.getSeconds();\n    node.status({fill:\"blue\",shape:\"ring\",text:\"Last update: \"+ mm + \".\" + dd + \".\" + yyyy + \" \" + hh + \":\" + mmm + \":\" + ss});\n    \n    msg.formattedtime = mm + \".\" + dd + \".\" + yyyy + \" \" + hh + \":\" + mmm + \":\" + ss;\n}\n\nif (temp!==undefined) {\n    current = current - temp;\n    current = Math.floor(current/1000);\n    msg.secsincelast = current;\n    var minute = Math.floor(current/60);\n    var hour = Math.floor(minute/60);\n    var day = Math.floor(hour/24);\n    if (current>=24*60*60) {\n        msg.lastupdate = \"Last update \" + day + \" days, \" + hour%24 + \" hours, \" + minute%60 + \" minutes, \" + current%60 + \" seconds ago\";\n    } else if (current>=60*60) {\n        msg.lastupdate = \"Last update \" + hour%24 + \" hours, \" + minute%60 + \" minutes, \" + current%60 + \" seconds ago\";\n    } else if (current>=60) {\n        msg.lastupdate = \"Last update \" + minute%60 + \" minutes, \" + current%60 + \" seconds ago\";\n    } else {\n        msg.lastupdate = \"Last update \" + current%60 + \" seconds ago\";\n    }\n}\n\n\nif (msg.topic===\"update\") {\n    return [null,msg];\n} else {\n    return [msg,msg];\n}\n\n\n",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 930,
+        "y": 80,
+        "wires": [
+            [
+                "5d0340de.cef54"
+            ],
+            [
+                "b9e96de9.fef6"
+            ]
+        ]
+    },
+    {
+        "id": "5d0340de.cef54",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "f7484b59.822cc",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status Last Update",
+        "format": "{{msg.formattedtime}}",
+        "layout": "row-spread",
+        "x": 1250,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b9e96de9.fef6",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "f7484b59.822cc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Seconds since last update",
+        "label": "",
+        "format": "{{msg.lastupdate}}",
+        "layout": "row-spread",
+        "x": 1278.9999771118164,
+        "y": 81.00000762939453,
+        "wires": []
+    },
+    {
+        "id": "57fe8f1e.c0584",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "InkBird Temp",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "home/OpenMQTTGatewayBLE/BTtoMQTT/4942070027DD",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 940,
+        "wires": [
+            [
+                "2cbcff86.c826c"
+            ]
+        ]
+    },
+    {
+        "id": "2cbcff86.c826c",
+        "type": "json",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 850,
+        "y": 960,
+        "wires": [
+            [
+                "1943d1.43da4c3",
+                "fdaa212.9c0b46",
+                "1ae254bf.442993",
+                "2f8a4808.47d29",
+                "a96211.97ac9df"
+            ]
+        ]
+    },
+    {
+        "id": "1943d1.43da4c3",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "InkBird Temp",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f6cd98b1.080268",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "home/OpenMQTTGatewayBLE/BTtoMQTT",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "home/OpenMQTTGatewayBLE/BTtoMQTT",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "fc3c896a.edd6a8"
+            ]
+        ]
+    },
+    {
+        "id": "fc3c896a.edd6a8",
+        "type": "json",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "9cf718bc.5692a",
+                "e5de98cc.5ec428"
+            ]
+        ]
+    },
+    {
+        "id": "9cf718bc.5692a",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "BTtoMQTT",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1050,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d7c9b7d7.85f458",
+        "type": "ui_chart",
+        "z": "9af6b790.64a958",
+        "name": "InkBird Temp",
+        "group": "dd042833.8a5758",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "InkBird Temp",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "12",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1250,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fdaa212.9c0b46",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.tempf",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 900,
+        "wires": [
+            [
+                "d7c9b7d7.85f458"
+            ]
+        ]
+    },
+    {
+        "id": "a3be751e.d3b338",
+        "type": "link out",
+        "z": "9af6b790.64a958",
+        "name": "MQTT Mi Scale Slave Out",
+        "links": [
+            "e43a1a6d.e45cb8"
+        ],
+        "x": 1555,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "21df47e1.aa186",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 60 Seconds",
+        "topic": "",
+        "payload": "{\"interval\":60000}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 540,
+        "y": 420,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "fb79b91e.b80f78",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 10 Seconds",
+        "topic": "",
+        "payload": "{\"interval\":10000}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 540,
+        "y": 460,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "e95122cb.6ecfa8",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 0",
+        "topic": "home/OpenMQTTGatewayBLE/commands/MQTTtoBT/config",
+        "payload": "{\"interval\":0}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 510,
+        "y": 580,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "7e5816c1.fc6ab8",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Erase",
+        "topic": "home/OpenMQTTGatewayBLE/commands/MQTTtoSYS/config",
+        "payload": "{\"cmd\":\"erase\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 610,
+        "y": 820,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "39118d45.a41c02",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Restart",
+        "topic": "",
+        "payload": "{\"cmd\":\"restart\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 610,
+        "y": 740,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "1ac5d858.4a786",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Status",
+        "topic": "",
+        "payload": "{\"cmd\":\"status\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 610,
+        "y": 660,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "464ba6b4.300f18",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "MQTTtoSYS",
+        "info": "",
+        "x": 1050,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7e22be88.de329",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "MQTTtoBT",
+        "info": "",
+        "x": 1040,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "50de426d.0a800c",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "OpenMQTT BLE Slave Out",
+        "info": "",
+        "x": 1630,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "aed7bc6b.ce44a8",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 5 Seconds",
+        "topic": "",
+        "payload": "{\"interval\":5000}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "9a857745.35f88",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "934d2234.d916e8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Last Update",
+        "format": "{{msg.formattedtime}}",
+        "layout": "row-spread",
+        "x": 1260,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "9b4be8f1.ef5dc8",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "Weight Update",
+        "func": "var now = new Date();\nvar yyyy = now.getFullYear();\nvar mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\nvar dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nvar ss  = now.getSeconds() < 10 ? \"0\" + now.getSeconds() : now.getSeconds();\nvar formattedtime = hh + \":\" + mmm + \" \" + mm + \"/\" + dd + \"/\" + yyyy;\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Last update: \"+ formattedtime});\nmsg.formattedtime = formattedtime;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 1320,
+        "wires": [
+            [
+                "9a857745.35f88"
+            ]
+        ]
+    },
+    {
+        "id": "e5de98cc.5ec428",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "New devices",
+        "func": "// Get the previously stored commands\nvar temp = context.get(\"commands\");\nif (temp===undefined) {\n    temp = [];\n}\n\nif (msg.topic===\"--ClearList--\") {\n    // Clear the current list\n    temp = [];\n} else {\n    // Add the new one \n    var found = false;\n    for (var i=0; i<temp.length; i++) {\n        if (temp[i].id===msg.payload.id) {\n            // device already registered, update the existing entry\n            found = true;\n            temp[i].name = msg.payload.name;\n            temp[i].full = msg.payload.rssi;\n        }\n    }\n    if (!found) {\n        // this is a new device, add to the list\n        temp.push({id: msg.payload.id, name: msg.payload.name, full: msg.payload.rssi});\n    }\n}\ncontext.set(\"commands\",temp);\n\n\n//Format the output\nmsg.payload = \"\";\nfor (var i=0; i<temp.length; i++) {\n    msg.payload += \"ID=\"+temp[i].id +\" | Name=\"+temp[i].name+\" | Full=\"+temp[i].rssi + \"<br/>\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 320,
+        "wires": [
+            [
+                "224bbbf7.ec6ab4"
+            ]
+        ]
+    },
+    {
+        "id": "224bbbf7.ec6ab4",
+        "type": "ui_template",
+        "z": "9af6b790.64a958",
+        "group": "beb05dd4.c0ef48",
+        "name": "New Devices",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\" height=\"600\" style=\"height: 600px;\"><br/></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 1230,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6d16032.01e61",
+        "type": "ui_button",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "group": "beb05dd4.c0ef48",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear List",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "--ClearList--",
+        "x": 900,
+        "y": 260,
+        "wires": [
+            [
+                "e5de98cc.5ec428"
+            ]
+        ]
+    },
+    {
+        "id": "dd65e192.ab052",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "f7484b59.822cc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "IP:",
+        "label": "IP:",
+        "format": "{{msg.payload.ip}}",
+        "layout": "row-spread",
+        "x": 1210,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ef80272a.87b838",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "f7484b59.822cc",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "mac:",
+        "label": "mac:",
+        "format": "{{msg.payload.mac}}",
+        "layout": "row-spread",
+        "x": 1210,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c3450df5.11e7f",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "f7484b59.822cc",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "Interval:",
+        "label": "Interval:",
+        "format": "{{msg.payload.interval}}",
+        "layout": "row-spread",
+        "x": 1220,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d8d15a79.fda2e8",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Set Topic to your gateway name",
+        "info": "",
+        "x": 650,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3fc188db.32d78",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Set Topic to your gateway name",
+        "info": "",
+        "x": 650,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "40bbedd8.f0929c",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "home/OpenMQTTGatewayBLE/commands/MQTTtoSYS/config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "home/OpenMQTTGatewayBLE/commands/MQTTtoSYS/config",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1210,
+        "y": 700,
+        "wires": [
+            [
+                "a3be751e.d3b338"
+            ]
+        ]
+    },
+    {
+        "id": "811633af.3c3be8",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 1 Second",
+        "topic": "",
+        "payload": "{\"interval\":1000}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "8baa8430.d5a7",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "home/OpenMQTTGatewayBLE/commands/MQTTtoBT/config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "home/OpenMQTTGatewayBLE/commands/MQTTtoBT/config",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 620,
+        "wires": [
+            [
+                "a3be751e.d3b338"
+            ]
+        ]
+    },
+    {
+        "id": "ebf63951.97408",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Set Topic to your gateway name",
+        "info": "",
+        "x": 1250,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "41a8149e.c7c5f4",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Set Topic to your gateway name",
+        "info": "",
+        "x": 1270,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "63fa2e39.aa45e8",
+        "type": "ui_button",
+        "z": "9af6b790.64a958",
+        "name": "OpenMQTT System Erase **CAREFULL**",
+        "group": "14b46e10.38354a",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "OpenMQTT System  Erase **CAREFULL**",
+        "tooltip": "",
+        "color": "white",
+        "bgcolor": "red",
+        "icon": "",
+        "payload": "{\"cmd\":\"erase\"}",
+        "payloadType": "str",
+        "topic": "",
+        "x": 500,
+        "y": 860,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "5654ed00.fceb54",
+        "type": "ui_button",
+        "z": "9af6b790.64a958",
+        "name": "OpenMQTT Restart",
+        "group": "14b46e10.38354a",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "OpenMQTT Restart",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"cmd\":\"restart\"}",
+        "payloadType": "str",
+        "topic": "",
+        "x": 560,
+        "y": 780,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "7388bfb.119964",
+        "type": "ui_button",
+        "z": "9af6b790.64a958",
+        "name": "Request OpenMQTT Status",
+        "group": "14b46e10.38354a",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Request OpenMQTT Status",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"cmd\":\"status\"}",
+        "payloadType": "str",
+        "topic": "",
+        "x": 540,
+        "y": 700,
+        "wires": [
+            [
+                "40bbedd8.f0929c"
+            ]
+        ]
+    },
+    {
+        "id": "9a59efde.0beef",
+        "type": "ui_text_input",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval (submits after typing)",
+        "label": "Set Interval (submits after typing)",
+        "tooltip": "in miliseconds (1000=1 second , 60000=60 seconds)",
+        "group": "14b46e10.38354a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "number",
+        "delay": "1000",
+        "topic": "",
+        "x": 560,
+        "y": 620,
+        "wires": [
+            [
+                "933a02f.ed5e7"
+            ]
+        ]
+    },
+    {
+        "id": "933a02f.ed5e7",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "SetPayload",
+        "func": "var int=msg.payload;\nvar quote= '\"'\nvar obracket= '{'\nvar cbracket= '}'\nmsg.payload = obracket + quote + \"interval\" + quote + \":\" + int + cbracket;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 620,
+        "wires": [
+            [
+                "8baa8430.d5a7",
+                "4e3dd4a0.ff912c"
+            ]
+        ]
+    },
+    {
+        "id": "4e3dd4a0.ff912c",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "346a8a1a.eb679e",
+        "type": "ui_form",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "label": "White/Black List Devices",
+        "group": "14b46e10.38354a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Comma Separated List with quotes around \"ID\"",
+                "value": "csv",
+                "type": "multiline",
+                "required": true,
+                "rows": 2
+            },
+            {
+                "label": "Whitelist",
+                "value": "whitelist",
+                "type": "checkbox",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Blacklist",
+                "value": "blacklist",
+                "type": "checkbox",
+                "required": false,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "csv": "",
+            "whitelist": false,
+            "blacklist": false
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 530,
+        "y": 380,
+        "wires": [
+            [
+                "e0431983.6eab5"
+            ]
+        ]
+    },
+    {
+        "id": "e0431983.6eab5",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "SetPayload",
+        "func": "var csv=msg.payload.csv;\nvar wht=msg.payload.whitelist;\nvar blk=msg.payload.blacklist;\nvar quote= '\"';\nvar obracket= '{';\nvar cbracket= '}';\nif (wht===true && blk===false)\n{\nmsg.payload = obracket + quote + \"white-list\" + quote + \":[\" + csv + \"]\" + cbracket; \n}    \nif (wht===false && blk===true)\n{\nmsg.payload = obracket + quote + \"black-list\" + quote + \":[\" + csv + \"]\" + cbracket; \n}     \nreturn msg;  \n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 380,
+        "wires": [
+            [
+                "73cb1c9c.6d881c",
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "73cb1c9c.6d881c",
+        "type": "debug",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9628b561.6a51e",
+        "type": "ui_button",
+        "z": "9af6b790.64a958",
+        "name": "Clear Form - White/Black List Devices",
+        "group": "14b46e10.38354a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear Form - White/Black List Devices",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "--ClearList--",
+        "x": 570,
+        "y": 320,
+        "wires": [
+            [
+                "78754064.d24598"
+            ]
+        ]
+    },
+    {
+        "id": "78754064.d24598",
+        "type": "function",
+        "z": "9af6b790.64a958",
+        "name": "SetPayload",
+        "func": "msg={};\nmsg.payload={};\nmsg.payload.propertyNameInForm='';\nmsg.payload.csv='';\nmsg.payload.whitelis='';\nmsg.payload.blacklist='';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "346a8a1a.eb679e",
+                "9a59efde.0beef"
+            ]
+        ]
+    },
+    {
+        "id": "1ae254bf.442993",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "dd042833.8a5758",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Battery",
+        "format": "{{msg.payload.batt}}",
+        "layout": "row-spread",
+        "x": 1240,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "2f8a4808.47d29",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "dd042833.8a5758",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "RSSI",
+        "format": "{{msg.payload.rssi}}",
+        "layout": "row-spread",
+        "x": 1230,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a96211.97ac9df",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "dd042833.8a5758",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "ID",
+        "format": "{{msg.payload.id}}",
+        "layout": "row-spread",
+        "x": 1230,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "fe648bd4.34b3e8",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "MQTT Server In",
+        "info": "",
+        "x": 220,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "2e4a0b65.4e138c",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "MQTT Server Out",
+        "info": "",
+        "x": 1610,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "21bbf167.1222d6",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Any input. I use a cheap 433hz button",
+        "info": "",
+        "x": 590,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "8f0bb92f.1665d",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "enable post to IFTTT",
+        "info": "",
+        "x": 1000,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "25d2758f.47104a",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "IFTTT check",
+        "info": "",
+        "x": 1250,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "cd1bc498.b6904",
+        "type": "inject",
+        "z": "9af6b790.64a958",
+        "name": "Set Interval 1 Second",
+        "topic": "",
+        "payload": "{\"interval\":1000}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 740,
+        "y": 1560,
+        "wires": [
+            [
+                "4c7a0ea3.63fd98"
+            ]
+        ]
+    },
+    {
+        "id": "4a90e9c3.6af8c8",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "Set interval for scale",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 800,
+        "y": 1660,
+        "wires": [
+            [
+                "8408a34a.f55958"
+            ],
+            [
+                "9d414528.b932c"
+            ]
+        ]
+    },
+    {
+        "id": "8408a34a.f55958",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "1 Second",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"interval\":1000}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 1660,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "9d414528.b932c",
+        "type": "change",
+        "z": "9af6b790.64a958",
+        "name": "60 Seconds",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"interval\":60000}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 1700,
+        "wires": [
+            [
+                "8baa8430.d5a7"
+            ]
+        ]
+    },
+    {
+        "id": "4a199ae0.df7834",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "Change interval to 1 sec then back to 60",
+        "info": "",
+        "x": 940,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "360f8b09.355544",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "934d2234.d916e8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "RSSI",
+        "format": "{{msg.payload.rssi}}",
+        "layout": "row-spread",
+        "x": 1230,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "6382b8dd.b5669",
+        "type": "ui_text",
+        "z": "9af6b790.64a958",
+        "group": "934d2234.d916e8",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "ID",
+        "format": "{{msg.payload.id}}",
+        "layout": "row-spread",
+        "x": 1230,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "b7e0ff11.f3b738",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "BTtoMQTT",
+        "info": "",
+        "x": 440,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e5a7f7a8.46b5",
+        "type": "comment",
+        "z": "9af6b790.64a958",
+        "name": "SYStoMQTT",
+        "info": "",
+        "x": 430,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "934d2234.d916e8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Mi Scale",
+        "tab": "9f3b8208.503f7",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "f7484b59.822cc",
+        "type": "ui_group",
+        "z": "",
+        "name": "System",
+        "tab": "88e06b90.fb9fd",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dd042833.8a5758",
+        "type": "ui_group",
+        "z": "",
+        "name": "Inkbird IBS-TH2",
+        "tab": "9f3b8208.503f7",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "beb05dd4.c0ef48",
+        "type": "ui_group",
+        "z": "",
+        "name": "Found Devices",
+        "tab": "88e06b90.fb9fd",
+        "order": 3,
+        "disp": true,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "14b46e10.38354a",
+        "type": "ui_group",
+        "z": "",
+        "name": "Commands",
+        "tab": "88e06b90.fb9fd",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "9f3b8208.503f7",
+        "type": "ui_tab",
+        "z": "",
+        "name": "BLE Devices",
+        "icon": "dashboard",
+        "order": 7,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "88e06b90.fb9fd",
+        "type": "ui_tab",
+        "z": "",
+        "name": "OpenMQTT",
+        "icon": "dashboard",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    }
+]
