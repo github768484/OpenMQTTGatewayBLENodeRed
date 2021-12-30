@@ -1,0 +1,37 @@
+I’m always trying a way to contribute back to the group for all the help and great work. Here’s an attempt to give back with the ability to:
+
+    Review system information from the OMG gateway
+    Issue commands to OMG whitelist, blacklist, set interval, request status, restart, and erase
+    Review a list of discovered devices.
+    I’ve also included 2 working examples.
+
+Prerequisites:
+
+    Node Red with MQTT and node-red-dashboard
+
+Optional: (for Mi Scale)
+
+    Pushbullet account and node-red-node-pushbullet
+    node-red-contrib-mytimeout
+    Google Sheets (account)
+    Fitbit (account)
+    IFTTT (account)
+
+There are 2 tabs:
+
+    OpenMQTT (system and controls)
+    BLE Devices (examples)
+
+The OpenMQTT BLE flow has comment nodes that try to explain what’s going on.
+
+    I’ve implemented link nodes in lieu of MQTT server nodes. I keep all my services under an Injection Master flow. Change these to suite you build.
+    There are 4 switch nodes that you’ll need to set your OMG topic. The “Set Topic to your gateway name” nodes will help you find these. Be carefully how you edit. There are different topics for Commands, System, and Bluetooth commands.
+    Info on commands can be found here https://docs.openmqttgateway.com/use/ble.html
+
+The InkBird temp example is pretty clear-cut with no action.
+The Mi Scale example requires explanation. Here’s what happens
+
+    I use a cheap 433 hz button to log the weight provided by the scale. “RF_Link Mi Scale Slave In” comment node.
+    mytimeout node will “enable scale” and “set interval” to 10 seconds. Once the countdown is complete, the interval is back to 60 seconds and the log function is disabled.
+    After the scale is enabled, the IFTTT webhook will issue a “scale ready” notification to my phone via pushbullet.
+    I stand on the scale and the IFTTT webhook (under “IFTTT check” comment) will send the weight to fitbit, google sheets, and pushbullet for a notification that it is complete.
