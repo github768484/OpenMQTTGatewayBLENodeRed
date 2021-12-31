@@ -94,7 +94,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 930,
+        "x": 910,
         "y": 1140,
         "wires": [
             [
@@ -141,8 +141,8 @@
             "#c5b0d5"
         ],
         "outputs": 1,
-        "x": 1240,
-        "y": 1280,
+        "x": 1390,
+        "y": 1260,
         "wires": [
             []
         ]
@@ -181,14 +181,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 920,
-        "y": 1240,
+        "x": 910,
+        "y": 1180,
         "wires": [
             [
-                "cf475601.49a578",
-                "9aea97a.05350e8",
-                "9b4be8f1.ef5dc8",
-                "6bd85662.eebcc"
+                "a8960b1c.e572b"
             ]
         ]
     },
@@ -204,8 +201,8 @@
         "label": "Weight",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1240,
-        "y": 1240,
+        "x": 1390,
+        "y": 1220,
         "wires": []
     },
     {
@@ -365,8 +362,8 @@
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 1450,
-        "y": 1400,
+        "x": 1410,
+        "y": 1380,
         "wires": [
             [
                 "4a0acc31.451ab4"
@@ -383,8 +380,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 1630,
-        "y": 1400,
+        "x": 1590,
+        "y": 1380,
         "wires": []
     },
     {
@@ -395,8 +392,8 @@
         "func": "var scale = flow.get('EnableScale');\nvar weight = msg.payload;\nvar now = new Date();\nvar yyyy = now.getFullYear();\nvar mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\nvar dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nvar ss  = now.getSeconds() < 10 ? \"0\" + now.getSeconds() : now.getSeconds();\nvar formattedtime = mm + \"/\" + dd + \"/\" + yyyy;\nif (scale  ==\"ON\") {\nmsg.event = \"LogWeight\"; //change to trigger \nnode.status({fill:\"blue\",shape:\"ring\",text:\"Weight:\" + weight + \" Last update: \"+ formattedtime});\nmsg.payload = {\"value1\": weight,\"value2\": formattedtime};\nreturn msg;\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 1280,
-        "y": 1400,
+        "x": 1240,
+        "y": 1380,
         "wires": [
             [
                 "7c713347.96a014"
@@ -964,8 +961,8 @@
         "label": "Last Update",
         "format": "{{msg.formattedtime}}",
         "layout": "row-spread",
-        "x": 1260,
-        "y": 1320,
+        "x": 1410,
+        "y": 1300,
         "wires": []
     },
     {
@@ -976,8 +973,8 @@
         "func": "var now = new Date();\nvar yyyy = now.getFullYear();\nvar mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\nvar dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nvar ss  = now.getSeconds() < 10 ? \"0\" + now.getSeconds() : now.getSeconds();\nvar formattedtime = hh + \":\" + mmm + \" \" + mm + \"/\" + dd + \"/\" + yyyy;\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Last update: \"+ formattedtime});\nmsg.formattedtime = formattedtime;\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 1060,
-        "y": 1320,
+        "x": 1220,
+        "y": 1300,
         "wires": [
             [
                 "9a857745.35f88"
@@ -1560,8 +1557,8 @@
         "z": "9af6b790.64a958",
         "name": "IFTTT check",
         "info": "",
-        "x": 1250,
-        "y": 1360,
+        "x": 1400,
+        "y": 1340,
         "wires": []
     },
     {
@@ -1693,8 +1690,8 @@
         "label": "RSSI",
         "format": "{{msg.payload.rssi}}",
         "layout": "row-spread",
-        "x": 1230,
-        "y": 1160,
+        "x": 1380,
+        "y": 1140,
         "wires": []
     },
     {
@@ -1709,8 +1706,8 @@
         "label": "ID",
         "format": "{{msg.payload.id}}",
         "layout": "row-spread",
-        "x": 1230,
-        "y": 1200,
+        "x": 1380,
+        "y": 1180,
         "wires": []
     },
     {
@@ -1732,6 +1729,57 @@
         "x": 430,
         "y": 40,
         "wires": []
+    },
+    {
+        "id": "a8960b1c.e572b",
+        "type": "switch",
+        "z": "9af6b790.64a958",
+        "name": "If payload number",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 950,
+        "y": 1220,
+        "wires": [
+            [
+                "4610148.1d58f6c"
+            ]
+        ]
+    },
+    {
+        "id": "4610148.1d58f6c",
+        "type": "delay",
+        "z": "9af6b790.64a958",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "8",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "15",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 940,
+        "y": 1260,
+        "wires": [
+            [
+                "cf475601.49a578",
+                "9aea97a.05350e8",
+                "9b4be8f1.ef5dc8",
+                "6bd85662.eebcc"
+            ]
+        ]
     },
     {
         "id": "934d2234.d916e8",
